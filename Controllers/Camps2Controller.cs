@@ -21,8 +21,9 @@ namespace CoreCodeCamp.Controllers
     private readonly IMapper _mapper;
     private readonly LinkGenerator _linkGenerator;
 
-    public Camps2Controller(ICampRepository repository, IMapper mapper, LinkGenerator linkGenerator)
+    public Camps2Controller(ICampRepository repository,IMapper mapper,LinkGenerator linkGenerator)
     {
+			// tabs
       _repository = repository;
       _mapper = mapper;
       _linkGenerator = linkGenerator;
@@ -33,7 +34,7 @@ namespace CoreCodeCamp.Controllers
     {
       try
       {
-        var results = await _repository.GetAllCampsAsync(includeTalks);
+        var results =_repository.GetAllCampsAsync(includeTalks).Result;
         var result = new
         {
           Count = results.Count(),
@@ -128,7 +129,7 @@ namespace CoreCodeCamp.Controllers
 
         _mapper.Map(model, oldCamp);
 
-        if (await _repository.SaveChangesAsync())
+        if (_repository.SaveChangesAsync().Result)
         {
           return _mapper.Map<CampModel>(oldCamp);
         }
