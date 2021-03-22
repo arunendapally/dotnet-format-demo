@@ -32,7 +32,7 @@ namespace CoreCodeCamp.Controllers
         {
             try
             {
-                var results = _repository.GetAllCampsAsync(includeTalks).Result;
+                var results = await _repository.GetAllCampsAsync(includeTalks);
                 var result = new
                 {
                     Count = results.Count(),
@@ -127,7 +127,7 @@ namespace CoreCodeCamp.Controllers
 
                 _mapper.Map(model, oldCamp);
 
-                if (_repository.SaveChangesAsync().Result)
+                if (await _repository.SaveChangesAsync())
                 {
                     return _mapper.Map<CampModel>(oldCamp);
                 }
