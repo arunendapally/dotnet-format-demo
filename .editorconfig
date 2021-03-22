@@ -40,7 +40,7 @@ dotnet_diagnostic.IDE0005.severity = warning
 dotnet_diagnostic.CS8019.severity = warning
 
 # AsyncifyInvocation: Use Task Async
-dotnet_diagnostic.AsyncifyInvocation.severity = warning
+dotnet_diagnostic.AsyncifyInvocation.severity = error
 
 # AsyncifyVariable: Use Task Async
-dotnet_diagnostic.AsyncifyVariable.severity = warning
+dotnet_diagnostic.AsyncifyVariable.severity = error
